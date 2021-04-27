@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import { RecipeContext } from '../context/RecipeContext';
 import Wrapper from '../components/Wrapper';
+import Box from '../components/Box';
 import Typography from '../components/Typography';
 import Search from '../components/Search';
 import Card from '../components/Card';
@@ -13,27 +14,31 @@ const { Title } = Typography;
 const Grid = styled.div`
 	margin: 4rem 0;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	grid-template-columns: 1fr;
 	gap: 4rem 1rem;
+	@media (min-width: 37.5em) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (min-width: 48em) {
+		grid-template-columns: repeat(3, 1fr);
+	}
 	@media (min-width: 56.25em) {
 		margin: 6rem 0;
 		gap: 4rem 2rem;
-	}
-`;
-
-const Box = styled.div`
-	margin: 4rem 0;
-	@media (min-width: 56.25em) {
-		margin: 6rem 0;
+		grid-template-columns: repeat(4, 1fr);
 	}
 `;
 
 function HomePage() {
-	const { recipes, isLoading, error } = useContext(RecipeContext);
+	const { recipes, isLoading, error, setError } = useContext(RecipeContext);
 
 	return (
 		<Wrapper>
-			<Alert show={error !== null} severity="error">
+			<Alert
+				onClose={() => setError(null)}
+				show={error !== null}
+				severity="error"
+			>
 				{error}
 			</Alert>
 

@@ -1,7 +1,6 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { hideAlert, showAlert } from '../animations';
-import { RecipeContext } from '../context/RecipeContext';
 
 declare type Severity = 'success' | 'error';
 
@@ -9,6 +8,7 @@ interface AlertProps {
 	severity: Severity;
 	show: boolean;
 	children: ReactNode;
+	onClose(): void;
 }
 
 const colors = {
@@ -22,7 +22,6 @@ const StyledAlert = styled.div<{ severity: Severity; show: boolean }>`
 	top: 2rem;
 	left: 0;
 	z-index: 100;
-	${({ show }) => (show ? showAlert : hideAlert)};
 	.inner {
 		background-color: ${({ severity }) => colors[severity]};
 		color: #000;
@@ -31,16 +30,16 @@ const StyledAlert = styled.div<{ severity: Severity; show: boolean }>`
 		max-width: 50rem;
 		margin: 0 2rem;
 		padding: 1rem 2rem;
+		transform-origin: left top;
+		${({ show }) => (show ? showAlert : hideAlert)};
 		@media (min-width: 37.5em) {
 			margin: 0 2rem 0 auto;
 		}
 	}
 `;
 
-function Alert({ severity, show, children }: AlertProps) {
+function Alert({ severity, show, children, onClose }: AlertProps) {
 	const [shouldRender, setRender] = useState(show);
-
-	const { setError } = useContext(RecipeContext);
 
 	useEffect(() => {
 		if (show) setRender(true);
@@ -49,11 +48,11 @@ function Alert({ severity, show, children }: AlertProps) {
 	useEffect(() => {
 		if (show) {
 			const timeout = window.setTimeout(() => {
-				setError(null);
+				onClose();
 			}, 3000);
 			return () => window.clearTimeout(timeout);
 		}
-	}, [setError, show]);
+	}, [onClose, show]);
 
 	const handleAnimationEnd = () => {
 		if (!show) setRender(false);

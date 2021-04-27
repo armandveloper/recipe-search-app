@@ -55,5 +55,5 @@ export const showAlert = css`
 `;
 
 export const hideAlert = css`
-	animation: ${fadeOut} 0.3s 0.2s ease-in, ${slideOutUp} 0.3s ease-in;
+	animation: ${fadeOut} 0.3s ease-in, ${slideOutUp} 0.3s ease-in;
 `;

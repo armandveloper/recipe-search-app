@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import { Step } from '../interfaces/recipe-response.interface';
 import Typography from './Typography';
 
 const { Title, Text } = Typography;
+
+interface RecipeInstructionsProps {
+	instructions: Step[];
+}
 
 const StyledInstructions = styled.section`
 	margin-top: 2rem;
@@ -33,48 +38,22 @@ const Instruction = styled.li`
 	}
 `;
 
-function Instructions() {
+function RecipeInstructions({ instructions }: RecipeInstructionsProps) {
 	return (
 		<StyledInstructions>
 			<Title as="h2" variant="h2">
 				Instructions
 			</Title>
 			<ul className="list">
-				<Instruction>
-					<div className="step">1</div>
-					<Text>
-						Lorem, ipsum dolor sit amet consectetur adipisicing
-						elit. Facilis, ipsam sunt voluptates modi minima in
-						accusantium nemo deleniti ab beatae.
-					</Text>
-				</Instruction>
-				<Instruction>
-					<div className="step">2</div>
-					<Text>
-						Lorem, ipsum dolor sit amet consectetur adipisicing
-						elit. Facilis, ipsam sunt voluptates modi minima in
-						accusantium nemo deleniti ab beatae.
-					</Text>
-				</Instruction>
-				<Instruction>
-					<div className="step">3</div>
-					<Text>
-						Lorem, ipsum dolor sit amet consectetur adipisicing
-						elit. Facilis, ipsam sunt voluptates modi minima in
-						accusantium nemo deleniti ab beatae.
-					</Text>
-				</Instruction>
-				<Instruction>
-					<div className="step">4</div>
-					<Text>
-						Lorem, ipsum dolor sit amet consectetur adipisicing
-						elit. Facilis, ipsam sunt voluptates modi minima in
-						accusantium nemo deleniti ab beatae.
-					</Text>
-				</Instruction>
+				{instructions.map((step) => (
+					<Instruction key={step.number}>
+						<div className="step">{step.number}</div>
+						<Text>{step.step}</Text>
+					</Instruction>
+				))}
 			</ul>
 		</StyledInstructions>
 	);
 }
 
-export default Instructions;
+export default RecipeInstructions;

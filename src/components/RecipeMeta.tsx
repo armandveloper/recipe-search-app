@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
-const StyledReciipeMeta = styled.div`
+interface RecipeMetaProps {
+	servings: number;
+	readyIn: number;
+}
+
+const StyledRecipeMeta = styled.div`
 	background-color: #48426d;
 	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
 	border-radius: 1.2rem;
 	margin-top: 2.4rem;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 2rem 0;
 	@media (min-width: 56.25em) {
 		grid-column: 2;
@@ -22,12 +27,6 @@ const MetaItem = styled.div<{ hightlight?: boolean }>`
 	align-items: center;
 	@media (min-width: 56.25em) {
 		gap: 0 1.4rem;
-	}
-	&:not(:first-child) {
-		grid-row: 2;
-		@media (min-width: 56.25em) {
-			grid-row: unset;
-		}
 	}
 	p {
 		font-size: 1rem;
@@ -57,38 +56,28 @@ const MetaItem = styled.div<{ hightlight?: boolean }>`
 	}
 `;
 
-function RecipeMeta() {
+function RecipeMeta({ servings, readyIn }: RecipeMetaProps) {
+	const readyInHours: number = +(readyIn / 60).toFixed(2);
+
 	return (
-		<StyledReciipeMeta>
+		<StyledRecipeMeta>
 			<MetaItem hightlight={true}>
 				<span className="material-icons">local_dining</span>
 				<p>
 					Yields
-					<span>12 servings</span>
+					<span>{servings} servings</span>
 				</p>
 			</MetaItem>
 			<MetaItem>
 				<span className="material-icons">schedule</span>
 				<p>
-					Cook time
-					<span>1 hour</span>
+					Ready in
+					<span>
+						{readyInHours} {readyInHours <= 1 ? 'hour' : 'hours'}
+					</span>
 				</p>
 			</MetaItem>
-			<MetaItem>
-				<span className="material-icons">schedule</span>
-				<p>
-					Cook time
-					<span>1 hour</span>
-				</p>
-			</MetaItem>
-			<MetaItem>
-				<span className="material-icons">schedule</span>
-				<p>
-					Cook time
-					<span>1 hour</span>
-				</p>
-			</MetaItem>
-		</StyledReciipeMeta>
+		</StyledRecipeMeta>
 	);
 }
 

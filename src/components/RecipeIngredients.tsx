@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 import Typography from './Typography';
 import Checkbox from './Checkbox';
+import { ExtendedIngredient } from '../interfaces/recipe-response.interface';
 
 const { Title, Text } = Typography;
+
+interface RecipeIngredientsProps {
+	ingredients: ExtendedIngredient[];
+}
 
 const StyledIngredients = styled.section`
 	margin-top: 2rem;
@@ -25,24 +30,22 @@ const Ingredient = styled.li`
 	}
 `;
 
-function Ingredients() {
+function RecipeIngredients({ ingredients }: RecipeIngredientsProps) {
 	return (
 		<StyledIngredients>
 			<Title as="h2" variant="h2">
 				Ingredients
 			</Title>
 			<ul className="list">
-				<Ingredient>
-					<Checkbox />
-					<Text>
-						Lorem, ipsum dolor sit amet consectetur adipisicing
-						elit. Facilis, ipsam sunt voluptates modi minima in
-						accusantium nemo deleniti ab beatae.
-					</Text>
-				</Ingredient>
+				{ingredients.map((ingredient) => (
+					<Ingredient key={ingredient.id}>
+						<Checkbox />
+						<Text>{ingredient.original}</Text>
+					</Ingredient>
+				))}
 			</ul>
 		</StyledIngredients>
 	);
 }
 
-export default Ingredients;
+export default RecipeIngredients;
