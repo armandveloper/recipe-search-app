@@ -4,6 +4,7 @@ declare type TitleLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 interface TitleProps {
 	variant: TitleLevel;
+	center?: boolean;
 	gutter?: boolean;
 }
 
@@ -26,7 +27,8 @@ const Title = styled.h1<TitleProps>`
 	font-size: ${({ variant }) => `${titleSizes[variant]}rem`};
 	line-height: 1.4;
 	font-weight: 700;
-	margin: 0;
+	margin: ${({ gutter }) => (gutter ? '2rem 0' : null)};
+	text-align: ${({ center }) => (center ? 'center' : 'left')};
 	@media (min-width: 37.5em) {
 		font-size: ${({ variant }) =>
 			`${(titleSizes[variant] * 1.25).toFixed(1)}rem`};

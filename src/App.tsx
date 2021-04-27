@@ -1,12 +1,13 @@
+import { RecipeProvider } from './context/RecipeContext';
+import AppRouter from './router/AppRouter';
 import GlobalStyles from './styles/globalStyles';
-import RecipePage from './pages/RecipePage';
 
 function App() {
 	return (
-		<div>
+		<RecipeProvider>
 			<GlobalStyles />
-			<RecipePage />
-		</div>
+			<AppRouter />
+		</RecipeProvider>
 	);
 }
 

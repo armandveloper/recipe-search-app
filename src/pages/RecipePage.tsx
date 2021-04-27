@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Wrapper from '../components/Wrapper';
 import Typography from '../components/Typography';
 import RecipeMeta from '../components/RecipeMeta';
-import Ingredients from '../components/Ingredients';
-import Instructions from '../components/Instructions';
+import Ingredients from '../components/RecipeIngredients';
+import Instructions from '../components/RecipeInstructions';
 
 const { Title } = Typography;
 
