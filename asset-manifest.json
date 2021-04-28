@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.js": "/recipe-search-app/static/js/main.88664442.chunk.js",
-    "main.js.map": "/recipe-search-app/static/js/main.88664442.chunk.js.map",
-    "runtime-main.js": "/recipe-search-app/static/js/runtime-main.a2a0e7f2.js",
-    "runtime-main.js.map": "/recipe-search-app/static/js/runtime-main.a2a0e7f2.js.map",
-    "static/js/2.454c9594.chunk.js": "/recipe-search-app/static/js/2.454c9594.chunk.js",
-    "static/js/2.454c9594.chunk.js.map": "/recipe-search-app/static/js/2.454c9594.chunk.js.map",
-    "static/js/3.559846a7.chunk.js": "/recipe-search-app/static/js/3.559846a7.chunk.js",
-    "static/js/3.559846a7.chunk.js.map": "/recipe-search-app/static/js/3.559846a7.chunk.js.map",
+    "main.js": "/recipe-search-app/static/js/main.42984124.chunk.js",
+    "main.js.map": "/recipe-search-app/static/js/main.42984124.chunk.js.map",
+    "runtime-main.js": "/recipe-search-app/static/js/runtime-main.fdd78b78.js",
+    "runtime-main.js.map": "/recipe-search-app/static/js/runtime-main.fdd78b78.js.map",
+    "static/js/2.34fb4275.chunk.js": "/recipe-search-app/static/js/2.34fb4275.chunk.js",
+    "static/js/2.34fb4275.chunk.js.map": "/recipe-search-app/static/js/2.34fb4275.chunk.js.map",
+    "static/js/3.b284cb7b.chunk.js": "/recipe-search-app/static/js/3.b284cb7b.chunk.js",
+    "static/js/3.b284cb7b.chunk.js.map": "/recipe-search-app/static/js/3.b284cb7b.chunk.js.map",
+    "static/js/4.b156603d.chunk.js": "/recipe-search-app/static/js/4.b156603d.chunk.js",
+    "static/js/4.b156603d.chunk.js.map": "/recipe-search-app/static/js/4.b156603d.chunk.js.map",
+    "static/js/5.7319fc5f.chunk.js": "/recipe-search-app/static/js/5.7319fc5f.chunk.js",
+    "static/js/5.7319fc5f.chunk.js.map": "/recipe-search-app/static/js/5.7319fc5f.chunk.js.map",
     "index.html": "/recipe-search-app/index.html",
-    "static/js/2.454c9594.chunk.js.LICENSE.txt": "/recipe-search-app/static/js/2.454c9594.chunk.js.LICENSE.txt"
+    "static/js/2.34fb4275.chunk.js.LICENSE.txt": "/recipe-search-app/static/js/2.34fb4275.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a2a0e7f2.js",
-    "static/js/2.454c9594.chunk.js",
-    "static/js/main.88664442.chunk.js"
+    "static/js/runtime-main.fdd78b78.js",
+    "static/js/2.34fb4275.chunk.js",
+    "static/js/main.42984124.chunk.js"
   ]
 }
