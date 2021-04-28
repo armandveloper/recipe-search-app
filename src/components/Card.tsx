@@ -27,7 +27,12 @@ const CardContent = styled.div`
 function Card({ recipe }: CardProps) {
 	return (
 		<div>
-			<CardMedia src={recipe.image} alt={recipe.title} />
+			<CardMedia
+				width={312}
+				height={231}
+				src={recipe.image}
+				alt={recipe.title}
+			/>
 			<CardContent>
 				<h2>{recipe.title}</h2>
 				<Link to={`/recipes/${recipe.id}`}>

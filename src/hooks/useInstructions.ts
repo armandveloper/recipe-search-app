@@ -31,6 +31,11 @@ const useInstructions = (
 					);
 				}
 				const data: InstructionsResponse[] = await resp.json();
+				if (!data[0]) {
+					throw new Error(
+						'We did not find the instructions for this recipe'
+					);
+				}
 				setInstructions(data[0].steps);
 				setError(null);
 			} catch (err) {

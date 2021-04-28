@@ -1,16 +1,18 @@
+import { lazy, Suspense } from 'react';
 import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
 	Redirect,
 } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import RecipePage from '../pages/RecipePage';
+import Loader from '../components/Loader';
+const HomePage = lazy(() => import('../pages/HomePage'));
+const RecipePage = lazy(() => import('../pages/RecipePage'));
 
 function AppRouter() {
 	return (
 		<Router basename="recipe-search-app">
-			<div>
+			<Suspense fallback={<Loader center={true} />}>
 				<Switch>
 					<Route path="/" exact={true}>
 						<HomePage />
@@ -20,7 +22,7 @@ function AppRouter() {
 					</Route>
 					<Redirect to="/" />
 				</Switch>
-			</div>
+			</Suspense>
 		</Router>
 	);
 }

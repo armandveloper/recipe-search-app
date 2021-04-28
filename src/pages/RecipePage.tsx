@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { RecipeContext } from '../context/RecipeContext';
 import useInstructions from '../hooks/useInstructions';
@@ -11,7 +10,6 @@ import RecipeMeta from '../components/RecipeMeta';
 import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
 import Loader from '../components/Loader';
-import Alert from '../components/Alert';
 
 const { Title } = Typography;
 
@@ -28,12 +26,14 @@ const StyledRecipePage = styled.div`
 			grid-row: 1;
 		}
 	}
+	.back {
+		color: #fff;
+	}
 `;
 
 const Image = styled.img`
 	display: block;
 	margin: 4rem auto;
-	max-width: 100%;
 `;
 
 function RecipePage() {
@@ -48,7 +48,6 @@ function RecipePage() {
 		instructions,
 		loadingInstructions,
 		instructionsError,
-		unsetError,
 	] = useInstructions(+id);
 
 	useEffect(() => {
@@ -74,18 +73,19 @@ function RecipePage() {
 
 	return (
 		<StyledRecipePage>
-			<Alert
-				onClose={unsetError}
-				show={instructionsError !== null}
-				severity="error"
-			>
-				{instructionsError}
-			</Alert>
 			<Wrapper>
+				<Link to="/" className="back">
+					<span className="material-icons">arrow_back</span>
+				</Link>
 				<Title center={true} variant="h1">
 					{recipe?.title}
 				</Title>
-				<Image src={recipe?.image} alt={recipe?.title} />
+				<Image
+					width={556}
+					height={370}
+					src={recipe?.image}
+					alt={recipe?.title}
+				/>
 				<div className="grid">
 					<RecipeMeta
 						servings={recipe?.servings}
@@ -100,7 +100,10 @@ function RecipePage() {
 								<Loader center={true} />
 							</Box>
 						) : (
-							<RecipeInstructions instructions={instructions} />
+							<RecipeInstructions
+								instructionsError={instructionsError}
+								instructions={instructions}
+							/>
 						)}
 					</div>
 				</div>

@@ -26,6 +26,11 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
   }
+  img {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: attr(width) / attr(height);
+  }
 `;
 
 export default GlobalStyles;
